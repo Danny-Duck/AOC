@@ -93,7 +93,7 @@ $ cd ctfjwl
     let dir_re = Regex::new(r"dir (?P<directory_name>.*)").unwrap();
     let file_re = Regex::new(r"(?P<file_size>\d*) (?P<file_name>.*)").unwrap();
 
-    let ops = include_str!("./day7.txt").split('\n');
+    let ops = include_str!("../../../day7.txt").split('\n');
     // let ops = sample_ops.split('\n');
     let root = Rc::new(Directory {
         name: "/".to_string(),

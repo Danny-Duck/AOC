@@ -93,7 +93,7 @@ fn main() {
     println!("sample part 1: {:?}", part1(sample));
     println!("sample part 2: {:?}", part2(sample));
 
-    let real = include_str!("./day4.txt");
+    let real = include_str!("../../../day4.txt");
     println!("part 1: {:?}", part1(real));
     println!("part 2: {:?}", part2(real));
 }

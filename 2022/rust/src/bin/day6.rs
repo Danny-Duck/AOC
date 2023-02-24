@@ -6,7 +6,8 @@ struct Case {
 }
 
 fn main() {
-    let data_stream = include_str!("./day6.txt");
+    let data_stream = include_str!("../../../day6.txt");
+
     let samples = vec![
         Case {
             case: "bvwbjplbgvbhsrlpgdmjqwftvncz",
@@ -40,7 +41,7 @@ fn main() {
 fn signal_processor(stream: &str, message_size: usize) -> usize {
     let chars: Vec<char> = stream.chars().collect();
     let indexable_message_size = message_size - 1;
-    for (ind, c) in chars.iter().enumerate() {
+    for (ind, _) in chars.iter().enumerate() {
         // index 3 will be the 4th element, this is important because we are looking backwards in
         // in the stream
         if ind > indexable_message_size {

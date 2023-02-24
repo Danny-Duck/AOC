@@ -56,7 +56,7 @@ fn parse_instructions(instructions_string: &str) -> Vec<Instruction> {
 }
 
 fn main() {
-    let instructions_string = include_str!("./day5.txt");
+    let instructions_string = include_str!("../../../day5.txt");
     let mut crate_stack = vec![
         vec!["S", "C", "V", "N"],
         vec!["Z", "M", "J", "H", "N", "S"],

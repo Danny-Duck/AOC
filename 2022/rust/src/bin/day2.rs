@@ -7,7 +7,7 @@
 // C Z Scissors 3
 
 fn main() {
-    let games: Vec<&str> = include_str!("./day2.txt").split('\n').collect();
+    let games: Vec<&str> = include_str!("../../../day2.txt").split('\n').collect();
 
     let mut first_score = 0;
     let mut second_score = 0;

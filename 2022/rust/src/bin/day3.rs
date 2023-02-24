@@ -72,7 +72,7 @@ fn main() {
     // ";
     // let ruck_sack_list: Vec<&str> = sample.split('\n').collect();
 
-    let ruck_sack_list: Vec<&str> = include_str!("./day3.txt").split('\n').collect();
+    let ruck_sack_list: Vec<&str> = include_str!("../../../day3.txt").split('\n').collect();
 
     let first_score = first(&ruck_sack_list);
     let second_score = second(&ruck_sack_list);
