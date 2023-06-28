@@ -1,34 +1,37 @@
 use std::collections::HashSet;
 
-fn first(ruck_sack_list: &[&str]) -> u32 {
-    let ruck_sack_pairs: Vec<(&str, &str)> = ruck_sack_list
-        .iter()
-        .map(|ruck_sack| return ruck_sack.split_at(ruck_sack.chars().count() / 2))
-        .collect();
+struct RuckSack {
+    contents_score: u32,
+}
 
-    let mut score = 0;
-
-    for ruck_sack_pair in ruck_sack_pairs {
-        let (first, second) = ruck_sack_pair;
-
-        let mut uniq_letters = HashSet::new();
+impl RuckSack {
+    fn new(ruck_sack_contents: &str) -> RuckSack {
+        let (first, second) = ruck_sack_contents.split_at(ruck_sack_contents.chars().count() / 2);
+        let mut uniq_letters_set = HashSet::new();
 
         for cha in first.chars() {
             if second.contains(cha) {
-                uniq_letters.insert(cha);
+                uniq_letters_set.insert(cha);
             }
         }
 
-        for &letter in uniq_letters.iter() {
-            if letter.is_ascii_uppercase() {
-                score += letter as u32 - 38
-            } else {
-                score += letter as u32 - 96
-            }
+        RuckSack {
+            contents_score: uniq_letters_set.iter().fold(0, |count, letter| {
+                if letter.is_ascii_uppercase() {
+                    count + *letter as u32 - 38
+                } else {
+                    count + *letter as u32 - 96
+                }
+            }),
         }
     }
+}
 
-    score
+fn first(ruck_sack_str_list: &[&str]) -> u32 {
+    ruck_sack_str_list
+        .iter()
+        .map(|ruck_sack_str| RuckSack::new(ruck_sack_str))
+        .fold(0u32, |count, ruck_sack| count + ruck_sack.contents_score)
 }
 
 fn second(ruck_sack_list: &[&str]) -> u32 {

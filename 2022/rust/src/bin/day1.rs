@@ -1,21 +1,32 @@
 use std::str::Split;
 
+struct Elf {
+    food: Vec<u32>,
+}
+
+impl Elf {
+    fn new(food_str: &str) -> Elf {
+        let food = food_str
+            .split('\n')
+            .map(|food_sub_str| {
+                if !food_sub_str.is_empty() {
+                    str::parse(food_sub_str).expect("Given string was not valid")
+                } else {
+                    0
+                }
+            })
+            .collect();
+        Elf { food }
+    }
+    fn sum_calories(&self) -> u32 {
+        self.food.iter().sum()
+    }
+}
+
 fn main() {
     let input: Split<&str> = include_str!("../../../day1.txt").split("\n\n");
-    let mut total_calories_each_elf_is_carrying: Vec<u32> = input
-        .map(|group| {
-            group
-                .split('\n')
-                .map(|string_number| {
-                    if !string_number.is_empty() {
-                        str::parse(string_number).expect("ahhh shit")
-                    } else {
-                        0
-                    }
-                })
-                .sum()
-        })
-        .collect();
+    let mut total_calories_each_elf_is_carrying: Vec<u32> =
+        input.map(|group| Elf::new(group).sum_calories()).collect();
 
     total_calories_each_elf_is_carrying.sort();
 

@@ -22,6 +22,9 @@ fn main() {
 
     // we have to burrow here because we would want the values to be dereferenced when this for loop ends
     for &game in &games {
+        if game.is_empty() {
+            continue;
+        }
         match game {
             // Rock
             "A X" => first_score += rock + drawer, // rock rock
@@ -38,9 +41,7 @@ fn main() {
             "C Y" => first_score += paper + loss, // scissors paper
             "C Z" => first_score += scissors + drawer, // scissors Scissors
 
-            "" => continue, // ignore blanks
-
-            _ => panic!("this shouldn't happen '{:?}'", game),
+            _ => panic!("Something has gone wrong '{:?}'", game),
         }
     }
 
