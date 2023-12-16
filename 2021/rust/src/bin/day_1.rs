@@ -52,7 +52,7 @@ fn depth_measure_part_two(input: &[usize]) -> usize {
         // 208  A B
         // 210    B
         // if [200, 208, 210] (B) > [199, 200, 208] (A) it the depth has increased
-        if window[1..4].iter().sum::<usize>() > window[0..=2].iter().sum::<usize>() {
+        if window[1..=3].iter().sum::<usize>() > window[0..=2].iter().sum::<usize>() {
             current + 1
         } else {
             current
